@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Env
+.env
+.env.*
+
+# Docker
+*.log
+
+# Postgres
+*.sql
+
+# Alembic
+alembic.ini.bak
+
+# VSCode
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,27 @@
+services:
+  db:
+    image: postgres:16
+    container_name: canvas_lite_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: canvas_lite
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build: .
+    container_name: canvas_lite_api
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONPATH=/app
+    depends_on:
+      - db
+    volumes:
+      - ./:/app
+
+volumes:
+  postgres_data:
