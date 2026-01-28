@@ -16,7 +16,8 @@ def get_db():
     db = SessionLocal()
     try:
         yield db
-    finally db.close()
+    finally:
+        db.close()
 
 
 def get_current_user(creds: HTTPAuthorizationCredentials = Depends(security),
