@@ -1,6 +1,7 @@
 from sqlalchemy import select
 from app.db.session import SessionLocal
 from app.db.models import User, Course, Enrollment
+from app.core.security import hash_password
 
 def get_or_create_user(db, **kwargs) -> User:
     existing = db.scalar(select(User).where(User.email == kwargs["email"]))
@@ -32,7 +33,7 @@ def main():
         instructor = get_or_create_user(
             db,
             email="prof@uni.edu",
-            hashed_pswd="x",
+            hashed_pswd=hash_password("password123"),
             role="instructor",
             first_name="Herbert",
             last_name="Garrison",
@@ -43,7 +44,7 @@ def main():
             get_or_create_user(
                 db,
                 email="stanmarsh@uni.edu",
-                hashed_pswd="y",
+                hashed_pswd=hash_password("password123"),
                 role="student",
                 first_name="Stan",
                 last_name="Marsh",
@@ -51,7 +52,7 @@ def main():
             get_or_create_user(
                 db,
                 email="ericcartman@uni.edu",
-                hashed_pswd="z",
+                hashed_pswd=hash_password("password123"),
                 role="student",
                 first_name="Eric",
                 last_name="Cartman",
@@ -59,7 +60,7 @@ def main():
             get_or_create_user(
                 db,
                 email="kylebrovlowski@uni.edu",
-                hashed_pswd="a",
+                hashed_pswd=hash_password("password123"),
                 role="student",
                 first_name="Kyle",
                 last_name="Brovlowski",

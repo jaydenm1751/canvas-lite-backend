@@ -47,7 +47,7 @@ def get_current_user(creds: HTTPAuthorizationCredentials = Depends(security),
 
 def require_instructor(user: User = Depends(get_current_user)) -> User:
     if user.role != "instructor":
-        raise HTTPException(status_code=status.HTTP_403_Forbidden,
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,
                             detail="Instructor Only",)
     return user
         
@@ -58,3 +58,5 @@ def require_student(user: User = Depends(get_current_user)) -> User:
             detail="Student only",
             )
     return user
+
+
