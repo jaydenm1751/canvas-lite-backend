@@ -4,12 +4,16 @@ from app.core.config import settings
 from app.db.session import engine
 from app.api.auth import router as auth_router
 from app.api.courses import router as courses_router
+from app.api.enrollments import router as enrollments_router
+
 
 
 app = FastAPI(title=settings.app_name)
 
 app.include_router(auth_router)
 app.include_router(courses_router)
+app.include_router(enrollments_router)
+
 
 @app.get("/health")
 def health():

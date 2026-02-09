@@ -32,10 +32,12 @@ def list_my_courses(db: Session = Depends(get_db), user: User = Depends(get_curr
     )
     return list(db.scalars(query).all())
 
+@router.get("/available", response_model=list[CourseOut])
+def list_available_courses(db: Session = Depends(get_db), user: User = Depends(get_current_user)):
+    subq = select(Enrollment.course_id).where(Enrollment.user_id == user.id)
+    q = select(Course).where(Course.id.not_in(subq)).order_by(Course.id.asc())
+    return list(db.scalars(q).all())
 
-#TODO register for a course with a student.
-@router.post("", response_model=CourseOut, status_code=201)
-def register_course():
-    return 0
+
 
 
