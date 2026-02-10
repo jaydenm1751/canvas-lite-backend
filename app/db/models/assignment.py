@@ -10,7 +10,8 @@ class Assignment(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     course_id: Mapped[int] = mapped_column(ForeignKey("courses.id", ondelete="CASCADE"), nullable=False, index=True)
     name: Mapped[str] = mapped_column(String(255), nullable=False)
-    due_date: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False) 
+    due_date: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    allow_late: Mapped[bool] = mapped_column(default=False, nullable=False) 
 
     # longer free-form text; Text is better than huge String
     instructions: Mapped[str | None] = mapped_column(Text, nullable=True)

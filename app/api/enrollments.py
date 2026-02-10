@@ -39,7 +39,7 @@ def enroll_in_course(payload: EnrollIn, db: Session = Depends(get_db), student: 
     db.refresh(enrolled)
     return enrolled
 
-@router.post("/{course_id}", status_code=204)
+@router.delete("/{course_id}", status_code=204)
 def drop_course(course_id: int, db: Session = Depends(get_db), student: User = Depends(require_student)):
     # email = payload.email.strip().lower()
     enrollment = db.scalar(
