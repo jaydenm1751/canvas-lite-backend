@@ -25,3 +25,15 @@ class AssignmentOut(BaseModel):
     created_at: datetime
 
     model_config = ConfigDict(from_attributes=True)
+
+class AssignmentDetailOut(BaseModel):
+    id: int
+    course_id: int
+    name: str
+    due_date: datetime
+    allow_late: bool
+    instructions: str | None
+    has_instructions_file: bool
+    created_at: datetime
+
+    model_config = ConfigDict(from_attributes=True)

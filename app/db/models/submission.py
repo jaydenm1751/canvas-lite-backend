@@ -14,7 +14,7 @@ class Submission(Base):
     assignment_id: Mapped[int] = mapped_column(ForeignKey("assignments.id", ondelete="CASCADE"), nullable=False, index=True)
     # name: Mapped[str] = mapped_column(String(255), nullable=False)
     student_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True)
-    attempt: Mapped[int] = mapped_column(Integer, nullable=False, default=1)
+    attempt: Mapped[int] = mapped_column(Integer, nullable=False, default=1) # maybe change to server_default
 
 
     submitted_at: Mapped[datetime] = mapped_column(
