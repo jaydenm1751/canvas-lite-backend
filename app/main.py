@@ -7,6 +7,7 @@ from app.api.courses import router as courses_router
 from app.api.enrollments import router as enrollments_router
 from app.api.assignments import router as assignments_router
 from app.api.submissions import router as submissions_router
+from app.api.grades import router as grades_router
 
 
 
@@ -17,6 +18,7 @@ app.include_router(courses_router)
 app.include_router(enrollments_router)
 app.include_router(assignments_router)
 app.include_router(submissions_router)
+app.include_router(grades_router)
 
 @app.get("/health")
 def health():

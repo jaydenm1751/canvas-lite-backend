@@ -5,7 +5,7 @@ from app.db.base import Base
 
 class Grade(Base):
     __tablename__ = "grades"
-    __table_args__ = (UniqueConstraint("submission_id", name="uq_gades_submission"),)
+    __table_args__ = (UniqueConstraint("submission_id", name="uq_grades_submission"),)
 
     id: Mapped[int] = mapped_column(primary_key=True)
     submission_id: Mapped[int] = mapped_column(ForeignKey("submissions.id", ondelete="CASCADE"), nullable=False, index=True)
